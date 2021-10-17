@@ -1,0 +1,35 @@
+#Instalar zsh e tilix
+apt install zsh tilix
+
+#Definir como padrão (não rodar como root/sudo)
+chsh
+
+#Colocar o caminho do zsh
+/bin/zsh
+
+#Fazer logout e abrir o tilix
+
+#Será exibido assistente de configuração do ZSH
+#Usar opção 0 para sair sem configurar
+
+#Instalar o OhMyZsh
+https://github.com/ohmyzsh/ohmyzsh
+
+#Instalar auto-suggestions
+https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md
+
+#Instalar syntax highlighting
+https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+
+#Instalar font awesome pelo gerenciador de pacotes
+sudo apt install fonts-font-awesome
+
+#Instalar PowerLevel10k para zsh
+https://github.com/romkatv/powerlevel10k#oh-my-zsh
+
+#Definir tema do zsh para powerlevel10k
+ZSH_THEME="powerlevel10k/powerlevel10k" ~/.zshrc
+
+#Reiniciar o terminal para aplicar o novo tema
+
+#Seguir assistente de configuração do PowerLevel10k
