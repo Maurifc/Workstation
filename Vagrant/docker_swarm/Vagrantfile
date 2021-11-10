@@ -14,6 +14,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "1024"
       vb.cpus = 2
       vb.customize ["modifyvm", :id, "--groups", "/Docker-Lab"]
+      vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
     end
     master.vm.provision "shell", path: "docker.sh"
     master.vm.provision "shell", path: "master.sh"
@@ -26,6 +27,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "1024"
       vb.cpus = 2
       vb.customize ["modifyvm", :id, "--groups", "/Docker-Lab"]
+      vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
     end
     node01.vm.provision "shell", path: "docker.sh"
     node01.vm.provision "shell", path: "worker.sh"
@@ -38,6 +40,7 @@ Vagrant.configure("2") do |config|
       vb.memory = "1024"
       vb.cpus = 2
       vb.customize ["modifyvm", :id, "--groups", "/Docker-Lab"]
+      vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
     end
     node02.vm.provision "shell", path: "docker.sh"
     node02.vm.provision "shell", path: "worker.sh"
