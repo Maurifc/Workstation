@@ -6,21 +6,23 @@
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-  config.vm.define "master" do |master| 
-    master.vm.box = "ubuntu/bionic64"
-    master.vm.network "private_network", ip: "10.10.10.100"
-    master.vm.provider "virtualbox" do |vb|
-      vb.name = "master"
+  config.vm.define "manager" do |manager| 
+    manager.vm.box = "ubuntu/bionic64"
+    manager.vm.hostname = "manager"
+    manager.vm.network "private_network", ip: "10.10.10.100"
+    manager.vm.provider "virtualbox" do |vb|
+      vb.name = "manager"
       vb.memory = "1024"
       vb.cpus = 2
       vb.customize ["modifyvm", :id, "--groups", "/Docker-Lab"]
       vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
     end
-    master.vm.provision "shell", path: "docker.sh"
-    master.vm.provision "shell", path: "master.sh"
+    manager.vm.provision "shell", path: "docker.sh"
+    manager.vm.provision "shell", path: "manager.sh"
   end
   config.vm.define "node01" do |node01| 
     node01.vm.box = "ubuntu/bionic64"
+    node01.vm.hostname = "node01"
     node01.vm.network "private_network", ip: "10.10.10.101"
     node01.vm.provider "virtualbox" do |vb|
       vb.name = "node01"
@@ -34,6 +36,7 @@ Vagrant.configure("2") do |config|
   end
   config.vm.define "node02" do |node02| 
     node02.vm.box = "ubuntu/bionic64"
+    node02.vm.hostname = "node02"
     node02.vm.network "private_network", ip: "10.10.10.102"
     node02.vm.provider "virtualbox" do |vb|
       vb.name = "node02"
