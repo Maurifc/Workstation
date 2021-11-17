@@ -1,0 +1,15 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.box = "ubuntu/bionic64"
+  config.vm.network "private_network", ip: "10.10.10.60"
+  config.vm.hostname = "nfs-server"
+  config.vm.provider "virtualbox" do |vb|
+    vb.name = "nfs-server"
+    vb.memory = "512"
+    vb.cpus = 1
+    vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
+  end
+  config.vm.provision "shell", path: "setup_nfs.sh"
+end
