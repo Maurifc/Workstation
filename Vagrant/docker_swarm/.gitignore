@@ -1,3 +1,4 @@
-.vagrant
-*.log
-worker.sh
+*
+!.gitignore
+!manager.sh
+!docker.sh
