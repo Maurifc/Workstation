@@ -23,3 +23,12 @@ curl -s https://repos.influxdata.com/influxdb.key | sudo tee /etc/apt/trusted.gp
 source /etc/os-release
 echo "deb https://repos.influxdata.com/${ID} ${VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 sudo apt-get update && sudo apt-get install telegraf
+sudo usermod -aG docker telegraf
+sudo usermod -aG adm telegraf
+
+# Update telegraf.conf
+cp /vagrant/files/telegraf.conf /etc/telegraf/telegraf.conf
+systemctl restart telegraf
+
+# Install Apache
+apt install -y apache2
